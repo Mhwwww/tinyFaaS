@@ -1,0 +1,43 @@
+
+POST http://localhost:80/test
+Content-Type: application/json
+
+{
+  "topic":"/#/drone/#",
+  "location":{
+    "lon":0,
+    "lat":0
+  },
+  "message":{
+    "temperature":35,
+    "speed":25,
+    "wind":3
+  }
+}
+###
+POST http://localhost:80/test
+Content-Type: application/json
+
+{
+  "topic":"read",
+  "location":{"lon":0,"lat":0},
+  "message":{
+    "temperature":15,
+    "speed":25,
+    "wind":3
+  }
+}
+###
+
+POST http://localhost:80/test
+Content-Type: application/json
+
+{
+  "topic":"read",
+  "location":{"lon":0,"lat":0},
+  "message":{
+    "speed":25,
+    "wind":3
+  }
+}
+###

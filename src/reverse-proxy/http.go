@@ -43,7 +43,7 @@ func startHTTPServer(f *functions) {
 		if async {
 			w.WriteHeader(http.StatusAccepted)
 			go func() {
-				resp, err := http.Post("http://"+handler[rand.Intn(len(handler))]+":8000/fn", "application/binary", bytes.NewBuffer(req_body))
+				resp, err := http.Post("http://"+handler[rand.Intn(len(handler))]+":8000/fn", r.Header.Get("Content-Type"), bytes.NewBuffer(req_body))
 
 				if err != nil {
 					return
@@ -55,7 +55,7 @@ func startHTTPServer(f *functions) {
 		}
 
 		// call function and return results
-		resp, err := http.Post("http://"+handler[rand.Intn(len(handler))]+":8000/fn", "application/binary", bytes.NewBuffer(req_body))
+		resp, err := http.Post("http://"+handler[rand.Intn(len(handler))]+":8000/fn", r.Header.Get("Content-Type"), bytes.NewBuffer(req_body))
 
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
