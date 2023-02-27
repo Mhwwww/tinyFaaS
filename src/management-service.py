@@ -271,6 +271,8 @@ class ListHandler(tornado.web.RequestHandler):
             self.finish(f"error while listing functions: {e}")
             raise e
 
+
+
 class LogsHandler(tornado.web.RequestHandler):
     def get(self) -> None:
         logging.debug('got request to get logs')
@@ -286,6 +288,7 @@ class LogsHandler(tornado.web.RequestHandler):
             self.set_status(500)
             self.finish(f"error while getting logs: {e}")
             raise e
+
 
 class ManagementService():
     def __init__(

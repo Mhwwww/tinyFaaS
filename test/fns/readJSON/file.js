@@ -22,6 +22,8 @@ module.exports = (req,res)=>{
 
                // console.log(topicSet[i])
                 //conjunction
+                // i want to check, if an evnet doesn't have all needed rule topic, then it won't be a matching event.
+                // question: if the event needs to have all the rule topic
                 if(!resultFromGeoBroker["message"][topicSet[i]]){
                     console.log("no matching event for the given rules topic")
                     res.write("no matching event for the given rules topic")
@@ -33,12 +35,11 @@ module.exports = (req,res)=>{
                     case "=":
                         if(resultFromGeoBroker["message"][topicSet[i]] == constraintsSet[i]){
                             console.log("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " + operatorSet[i] + constraintsSet[i]+ "\n")
-                            res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " + operatorSet[i] + constraintsSet[i]+ "\n")
+                            //res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " + operatorSet[i] + constraintsSet[i]+ "\n")
                             break;
                         }else{
                             console.log("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
-
-                            res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
+                            //res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
                             trueValue[i] = false
                             break;
                       }
@@ -48,12 +49,12 @@ module.exports = (req,res)=>{
                         if(resultFromGeoBroker["message"][topicSet[i]] > constraintsSet[i]){
                             console.log("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
 
-                            res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
+                            //res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
                             break;
 
                         }else{
                             console.log("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
-                            res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
+                           // res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
                             trueValue[i] = false
                             break;
 
@@ -64,12 +65,12 @@ module.exports = (req,res)=>{
                         if(resultFromGeoBroker["message"][topicSet[i]] < constraintsSet[i]){
                             console.log("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
 
-                            res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
+                           // res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
                             break;
 
                         }else{
                             console.log("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
-                            res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
+                            //res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
                             trueValue[i] = false
                             break;
 
@@ -77,12 +78,12 @@ module.exports = (req,res)=>{
                     case ">=":
                         if(resultFromGeoBroker["message"][topicSet[i]] >= constraintsSet[i]){
                             console.log("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
-                            res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
+                            //res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
                             break;
 
                         }else{
                             console.log("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
-                            res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
+                            //res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
                             trueValue[i] = false
                             break;
 
@@ -90,12 +91,12 @@ module.exports = (req,res)=>{
                     case "<=":
                         if(resultFromGeoBroker["message"][topicSet[i]] <= constraintsSet[i]){
                             console.log("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
-                            res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
+                            //res.write("for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+ "is " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+ "\n")
                             break;
 
                         }else{
                             console.log("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
-                            res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
+                           // res.write("NOT MATCHING!!! for event " + resultFromGeoBroker["topic"]+ " its " +topicSet[i]+  " is not " +operatorSet[i] + constraintsSet[i]+ ", it is: "+resultFromGeoBroker["message"][topicSet[i]]+"\n")
                             trueValue[i] = false
                             break;
 
@@ -113,12 +114,13 @@ module.exports = (req,res)=>{
       }
             if(trueValueTable){
                 console.log("the matching event is: "+ resultFromGeoBroker["topic"]+resultFromGeoBroker["location"]+resultFromGeoBroker["message"])
-                res.write("the matching event is: "+ resultFromGeoBroker)
+                res.write(JSON.stringify(resultFromGeoBroker["message"]))
+                //res.send("the new topics of the processed events are:")
 
             }
             else{
                 console.log("no matching for existing rules")
-                res.write("no matching for existing rules")
+                res.write(JSON.stringify({}))
             }
 
 
